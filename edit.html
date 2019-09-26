@@ -1,0 +1,34 @@
+<h2>Edit a Player</h2>
+<form role="form">
+    <div class="form-group">
+        <label for="name">Player Name:</label>
+        <input type="text" name="name" class="form-control" ng-model="playerName"> 
+    </div>
+    <div class="form-group">
+        <label for="position">Position:</label>
+        <select name="position" class="form-control" ng-model="playerPosition">
+            <option value="C">C</option>
+            <option value="1B">1B</option>
+            <option value="2B">2B</option>
+            <option value="3B">3B</option>
+            <option value="SS">SS</option>
+            <option value="LF">LF</option>
+            <option value="CF">CF</option>
+            <option value="RF">RF</option>
+            <option value="DH">DH</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="average">Batting Average:</label>
+        <input type="text" name="average" class="form-control" ng-model="playerBattingAverage"> 
+    </div>
+    <div class="form-group">
+        <label for="bats">Bats:</label>
+        <select name="bats" class="form-control" ng-model="playerBats">
+            <option value="Left">Left</option>
+            <option value="Right">Right</option>
+            <option value="Switch">Switch</option>
+        </select>
+    </div>
+    <input type="submit" ng-click="editPlayer()" class="btn btn-default btn-primary" value="Update Player">
+</form>

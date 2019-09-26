@@ -1,0 +1,50 @@
+<h1>New York Yankees</h1>
+<h2>Starting Lineup</h2>
+<a class="btn btn-primary pull-right" href="create">Sign A New Player</a>
+
+<table class="table table-bordered">
+    <thead>
+        <th>Order</th>
+        <th>Player Name</th>
+        <th>Position</th>
+        <th>Batting Average</th>
+        <th>Bats</th>
+        <th class="text-center">Actions</th>
+    </thead>
+    <tbody>
+        <tr ng-repeat="player in startingLineupArray track by $index" ng-class="{success: player.playerBattingAverage > '.250', danger: player.playerBattingAverage < '.200' }">
+            <td>{{ $index + 1 }}</td>
+            <td>{{ player.playerName }}</td>
+            <td>{{ player.playerPosition }}</td>
+            <td>{{ player.playerBattingAverage }}</td>
+            <td>{{ player.playerBats }}</td>
+            <td class="text-center">
+	            <a href="edit/{{$index}}"><span class="glyphicon glyphicon-pencil"></span></a>
+		        <span ng-click="removeStartingLineupPlayer(player)" class="glyphicon glyphicon-remove"></span>
+		    </td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Bench</h2>
+<table class="table table-bordered">
+    <thead>
+        <th>Player Name</th>
+        <th>Position</th>
+        <th>Batting Average</th>
+        <th>Bats</th>
+        <th class="text-center">Actions</th>
+    </thead>
+    <tbody>
+        <tr ng-repeat="player in benchArray track by $index" ng-class="{success: player.playerBattingAverage > '.250', danger: player.playerBattingAverage < '.200' }">
+            <td>{{ player.playerName }}</td>
+            <td>{{ player.playerPosition }}</td>
+            <td>{{ player.playerBattingAverage }}</td>
+            <td>{{ player.playerBats }}</td>
+            <td class="text-center">
+	            <a href="edit/{{$index}}"><span class="glyphicon glyphicon-pencil"></span></a>
+	            <span ng-click="removeBenchPlayer(player)" class="glyphicon glyphicon-remove"></span>
+	        </td>
+        </tr>
+    </tbody>
+</table>
