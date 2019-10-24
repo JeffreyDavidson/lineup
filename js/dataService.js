@@ -1,103 +1,51 @@
-angular.module("MyApp").service("dataService", function () {
-    
-    var startingLineupArray = [
-        { 
-            playerName: 'Brett Gardner', 
-            playerPosition: 'LF', 
-            playerBattingAverage: '.256', 
-            playerBats: 'Left', 
-        },
-        { 
-            playerName: 'Derek Jeter', 
-            playerPosition: 'SS', 
-            playerBattingAverage: '.256', 
-            playerBats: 'Right', 
-        },
-        { 
-            playerName: 'Jacoby Ellsbury', 
-            playerPosition: 'CF', 
-            playerBattingAverage: '.271', 
-            playerBats: 'Left', 
-        },
-        { 
-            playerName: 'Carlos Beltran', 
-            playerPosition: 'DH', 
-            playerBattingAverage: '.233', 
-            playerBats: 'Switch', 
-        },
-        { 
-            playerName: 'Mark Teixeira', 
-            playerPosition: '1B', 
-            playerBattingAverage: '.216', 
-            playerBats: 'Switch', 
-        },
-        { 
-            playerName: 'Brian McCann', 
-            playerPosition: 'C', 
-            playerBattingAverage: '.232', 
-            playerBats: 'Left', 
-        },
-        { 
-            playerName: 'Ichiro Suzuki', 
-            playerPosition: 'RF', 
-            playerBattingAverage: '.284', 
-            playerBats: 'Left', 
-        },
-        { 
-            playerName: 'Chase Headley', 
-            playerPosition: '3B', 
-            playerBattingAverage: '.262', 
-            playerBats: 'Switch', 
-        },
-        { 
-            playerName: 'Brendan Ryan', 
-            playerPosition: '2B', 
-            playerBattingAverage: '.167', 
-            playerBats: 'Right', 
-        }
-    ];
-    
-    var benchArray = [
-        { 
-            playerName: 'Martin Prado', 
-            playerPosition: 'OF', 
-            playerBattingAverage: '.316', 
-            playerBats: 'Right', 
-        },
-        { 
-            playerName: 'Chris Young', 
-            playerPosition: 'OF', 
-            playerBattingAverage: '.222', 
-            playerBats: 'Right', 
-        },
-        { 
-            playerName: 'Austin Romine', 
-            playerPosition: 'C', 
-            playerBattingAverage: '.231', 
-            playerBats: 'Right', 
-        },
-        { 
-            playerName: 'Stephen Drew', 
-            playerPosition: '2B', 
-            playerBattingAverage: '.162', 
-            playerBats: 'Left', 
-        }
-    ];
-    
-    this.getStartingLineup = function () {
-        return startingLineupArray;
-    };
-    
-    this.getBench = function () {
-        return benchArray;
-    };
-    
-    this.addPlayer = function (player) {
-        //var benchArray = this.getBench();
-        benchArray.push(player);
-    };
-    
-    this.editPlayer = function(player,idx){
-    	startingLineupArray.splice(idx,1,player);
+angular.module("MyApp").service("dataService", function ($http) {
+    this.getPlayer = function (playerId) {
+        var url = "http://lookup-service-prod.mlb.com/json/named.sport_hitting_tm.bam";
+        var params = {
+            league_list_id: 'mlb', 
+            game_type: 'R',
+            season: '2019',
+            player_id: playerId
+        };
+        var config = { params: params };
+
+        return $http.get(url, config)
+            .then(function (response) {
+                var player = response.data.results;
+                console.log(player);
+                return player;
+            });
+    }
+
+    this.getTeamRoster = function (teamId) {
+        var url = "http://lookup-service-prod.mlb.com/json/named.roster_40.bam";
+        var params = {
+            team_id:110,
+        };
+        var config = { params: params };
+
+        return $http.get(url, config)
+            .then(function (response) {
+                console.log(response.data.roster_40.queryResults.row);
+                var roster = response.data.roster_40.queryResults.row;
+                return roster;
+            });
+    }
+
+    this.getTeams = function () {
+        var url = "http://lookup-service-prod.mlb.com/json/named.team_all_season.bam";
+        var params = {
+            sport_code:'mlb', 
+            season:'2019'
+        };
+        var config = { params: params };
+
+        return $http.get(url, config)
+            .then(function (response) {
+                console.log(response);
+                var teamsList = response.data.results;
+                console.log(teamsList);
+                return teamsList;
+            });
     }
 });
