@@ -100,14 +100,4 @@ angular.module("MyApp").service("dataService", function () {
     this.editPlayer = function(player,idx){
     	startingLineupArray.splice(idx,1,player);
     }
-    
-    this.removeStartingLineupPlayer = function (player) {
-        //var startingLineupArray = this.getStartingLineup();
-        startingLineupArray.splice(startingLineupArray.indexOf(player), 1);
-    };
-    
-    this.removeBenchPlayer = function (player) {
-        //var benchArray = this.getBench();
-        benchArray.splice(benchArray.indexOf(player), 1);
-    };
 });
