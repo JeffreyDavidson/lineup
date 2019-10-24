@@ -12,26 +12,8 @@ angular.module("MyApp",  ['ngRoute'])
 
 .controller("ReadController", function ($scope, dataService) {
     
-    $scope.startingLineupArray = dataService.getStartingLineup();
-    
-    $scope.benchArray = dataService.getBench();
-    
-    $scope.removeStartingLineupPlayer = function(removedPlayer) {
-        dataService.removeStartingLineupPlayer(removedPlayer);
-    }
-    
-    $scope.removeBenchPlayer = function(removedPlayer) {
-        dataService.removeBenchPlayer(removedPlayer);
-    }
-})
 
 
 
-    $scope.removeStartingLineupPlayer = function (removedPlayer) {
-        dataService.removeStartingLineupPlayer(removedPlayer);
-    }
 
-    $scope.removeBenchPlayer = function (removedPlayer) {
-        dataService.removeBenchPlayer(removedPlayer);
-    }
 });
