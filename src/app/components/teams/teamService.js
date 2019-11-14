@@ -1,4 +1,4 @@
-angular.module("MyApp").service("dataService", function ($http) {
+export default function TeamService($http) {
     this.getPlayer = function (playerId) {
         var url = "http://lookup-service-prod.mlb.com/json/named.sport_hitting_tm.bam";
         var params = {
@@ -48,4 +48,6 @@ angular.module("MyApp").service("dataService", function ($http) {
                 return teamsList;
             });
     }
-});
+}
+
+TeamService.$inject = ['$http'];
