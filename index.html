@@ -2,20 +2,50 @@
 <html>
     <head>
     	<meta charset="UTF-8">
-        <title>New York Yankees</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
-        <link type="text/css" rel="stylesheet" href="css/application.css">
-        <script src="js/angular.min.js"></script>
+        <title>MLB</title>
+        <link type="text/css" rel="stylesheet" href="/dist/assets/css/app.css">
     </head>
 
-    <body ng-app="MyApp">
+    <body ng-app="MLBApp">
         <div class="container">
             <div class="row">
-                <div class="col-md-12" ng-view></div>
+                <div class="col-md-4">
+                    <div class="list-group">
+                        <!-- <li ng-repeat="team in teams">{{ team.name_display_full }}</li> -->
+                        <a href="/teams/1" class="list-group-item active">Arizona Diamondbacks</a>
+                        <a href="" class="list-group-item">Atlanta Braves</a>
+                        <a href="/teams/110" class="list-group-item">Baltimore Orioles</a>
+                        <a href="/teams/111" class="list-group-item">Boston Red Sox</a>
+                        <a href="/teams/112" class="list-group-item">Chicago Cubs</a>
+                        <a href="/teams/113" class="list-group-item">Chicago White Sox</a>
+                        <a href="/teams/113" class="list-group-item">Cincinnati Reds</a>
+                        <a href="/teams/114" class="list-group-item">Cleveland Indians</a>
+                        <a href="/teams/115" class="list-group-item">Colorado Rockies</a>
+                        <a href="/teams/116" class="list-group-item">Detriot Tigers</a>
+                        <a href="/teams/117" class="list-group-item">Houston Astros</a>
+                        <a href="/teams/118" class="list-group-item">Kansas City Royals</a>
+                        <a href="/" class="list-group-item">Los Angeles Angels</a>
+                        <a href="/teams/119" class="list-group-item">Los Angeles Dodgers</a>
+                        <a href="/" class="list-group-item">Miami Marlins</a>
+                        <a href="/" class="list-group-item">Minnesota Twins</a>
+                        <a href="/" class="list-group-item">Milwaukee Brewers</a>
+                        <a href="/teams/121" class="list-group-item">New York Mets</a>
+                        <a href="/" class="list-group-item">New York Yankees</a>
+                        <a href="/" class="list-group-item">Philadelphia Phillies</a>
+                        <a href="" class="list-group-item">Pittsburgh Pirates</a>
+                        <a href="" class="list-group-item">San Diego Padres</a>
+                        <a href="" class="list-group-item">San Francisco Giants</a>
+                        <a href="" class="list-group-item">Seattle Mariners</a>
+                        <a href="" class="list-group-item">St. Louis Cardinals</a>
+                        <a href="" class="list-group-item">Tampa Bay Rays</a>
+                        <a href="" class="list-group-item">Texas Rangers</a>
+                        <a href="" class="list-group-item">Toronto Blue Jays</a>
+                        <a href="/teams/120" class="list-group-item">Washington Nationals</a>
+                    </div>
+                </div>
+                <div class="col-md-8" ng-view></div>
             </div>
         </div>
-        <script src="js/angular-route.min.js"></script>
-        <script src="js/application.js"></script>
-        <script src="js/dataService.js"></script>
+        <script src="/dist/assets/js/app.js"></script>
     </body>
 </html> 

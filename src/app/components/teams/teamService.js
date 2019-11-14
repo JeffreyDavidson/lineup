@@ -20,7 +20,7 @@ angular.module("MyApp").service("dataService", function ($http) {
     this.getTeamRoster = function (teamId) {
         var url = "http://lookup-service-prod.mlb.com/json/named.roster_40.bam";
         var params = {
-            team_id:110,
+            team_id:teamId,
         };
         var config = { params: params };
 
